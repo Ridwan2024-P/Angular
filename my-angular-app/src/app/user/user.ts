@@ -1,4 +1,4 @@
-import { Component, computed, signal,Input,input, Output,EventEmitter } from '@angular/core';
+import { Component, computed, signal,Input,input, Output,EventEmitter, output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 import { StringifyOptions } from 'querystring';
 
@@ -14,9 +14,13 @@ export class User {
   @Input ({required:true}) id!:string;
    @Input({required: true}) avatar!: string;
    @Input({required : true}) name!: string;
-  @Output() select = new EventEmitter<string>();
+  // @Output() select = new EventEmitter<string>();
   // avatar = input.required<string>();
   // name = input.required<String>();
+
+  // Output function
+
+  select = output<string>();
 
 
   // selectedUser = signal(DUMMY_USERS [randomIndex])
