@@ -11,9 +11,11 @@ import { StringifyOptions } from 'querystring';
   styleUrl: './user.scss',
 })
 export class User {
-  @Input ({required:true}) id!:string;
-  @Input({required: true}) avatar!: string;
-  @Input({required : true}) name!: string;
+  @Input ({required:true})  user!:{
+    id:string;
+    name:string;
+    avatar:string;
+  }
   @Output() select = new EventEmitter<string>();
   // avatar = input.required<string>();
   // name = input.required<String>();
@@ -29,7 +31,7 @@ export class User {
   // //   return this.selectedUser.avatar
 
   get imagePath(){
-    return this.avatar;
+    return this.user.avatar;
   }
   
   
@@ -37,7 +39,7 @@ export class User {
     // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
     // this.selectedUser.set( DUMMY_USERS [randomIndex])
     // //  this.selectedUser = DUMMY_USERS [randomIndex]
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 
 }
