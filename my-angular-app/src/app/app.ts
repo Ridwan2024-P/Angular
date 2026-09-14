@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { User } from './user/user';
 import { DUMMY_USERS } from './dummy-users';
 import { Tasks } from './tasks/tasks';
+import { NgFor } from '@angular/common';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Tasks } from './tasks/tasks';
 })
 export class App {
   users =  DUMMY_USERS;
-  selectedUserId = 'u1';
+  selectedUserId ?: string;
 
   get selectedUser(){
     return this.users.find((a)=>a.id === this.selectedUserId)!;

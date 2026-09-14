@@ -13,5 +13,10 @@
         <li><app-user [user]="users[4]" (select)="onSelectedUser($event)"></app-user></li>
         <li><app-user [user]="users[5]" (select)="onSelectedUser($event)"></app-user></li> -->
     </ul>
+    @if(selectedUser){
      <app-tasks [name] = "selectedUser.name"></app-tasks>
+    }@else {
+        <p>This is Home</p>
+    }
+   
 </main>
