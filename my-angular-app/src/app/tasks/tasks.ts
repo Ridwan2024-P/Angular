@@ -14,7 +14,7 @@ export class Tasks {
  tasks= [{
   id : 't1',
   userId:'u1',
-  tittle : 'Master Angular',
+  title : 'Master Angular',
   summary : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta repellendus corrupti vel natus excepturi dolore, vitae quis molestiae eaque placeat.',
   dueDate : '2026-12-12'
 
@@ -22,7 +22,7 @@ export class Tasks {
  {
   id : 't2',
   userId:'u2',
-  tittle : 'Master Angular',
+  title : 'Master Angular',
   summary : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta repellendus corrupti vel natus excepturi dolore, vitae quis molestiae eaque placeat.',
   dueDate : '2026-12-12'
 
@@ -30,7 +30,31 @@ export class Tasks {
  {
   id : 't3',
   userId:'u3',
-  tittle : 'Master Angular',
+  title : 'Master Angular',
+  summary : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta repellendus corrupti vel natus excepturi dolore, vitae quis molestiae eaque placeat.',
+  dueDate : '2026-12-12'
+
+ },
+  {
+  id : 't4',
+  userId:'u4',
+  title : 'Master Angular',
+  summary : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta repellendus corrupti vel natus excepturi dolore, vitae quis molestiae eaque placeat.',
+  dueDate : '2026-12-12'
+
+ },
+  {
+  id : 't5',
+  userId:'u5',
+  title : 'Master Angular',
+  summary : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta repellendus corrupti vel natus excepturi dolore, vitae quis molestiae eaque placeat.',
+  dueDate : '2026-12-12'
+
+ },
+  {
+  id : 't6',
+  userId:'u6',
+  title : 'Master Angular',
   summary : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta repellendus corrupti vel natus excepturi dolore, vitae quis molestiae eaque placeat.',
   dueDate : '2026-12-12'
 
