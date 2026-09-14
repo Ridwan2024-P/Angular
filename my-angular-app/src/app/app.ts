@@ -13,5 +13,8 @@ import { DUMMY_USERS } from './dummy-users';
 })
 export class App {
   users =  DUMMY_USERS
+  onSelectedUser(id:string){
+    console.log("User Id is : " + id)
+  }
   protected readonly title = signal('my-angular-app');
 }
