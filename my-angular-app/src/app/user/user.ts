@@ -1,6 +1,13 @@
-import { Component, computed, signal,Input,input, Output,EventEmitter, output } from '@angular/core';
+import { Component, computed, signal,Input,input, Output,EventEmitter, output, } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 import { StringifyOptions } from 'querystring';
+
+ type Users{
+  id : string;
+  name :string;
+  avatar :string;
+ }
+
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
 @Component({
@@ -11,11 +18,7 @@ import { StringifyOptions } from 'querystring';
   styleUrl: './user.scss',
 })
 export class User {
-  @Input ({required:true})  user!:{
-    id:string;
-    name:string;
-    avatar:string;
-  }
+  @Input ({required:true})  user!:Users
   @Output() select = new EventEmitter<string>();
   // avatar = input.required<string>();
   // name = input.required<String>();
