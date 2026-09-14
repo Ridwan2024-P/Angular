@@ -10,8 +10,8 @@ import { StringifyOptions } from 'querystring';
   styleUrl: './user.scss',
 })
 export class User {
-   @Input() avatar!: string;
-   @Input() name!: string;
+   @Input({required: true}) avatar!: string;
+   @Input({required : true}) name!: string;
 
 
   // selectedUser = signal(DUMMY_USERS [randomIndex])
