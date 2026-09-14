@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
+import { taskModal } from './task.modal';
 
-interface taskModal {
-  id:string,
-  userId:string,
-  title:string,
-  summary:string,
-  dueDate:string
+// interface taskModal {
+//   id:string,
+//   userId:string,
+//   title:string,
+//   summary:string,
+//   dueDate:string
 
-}
+// }
 @Component({
   selector: 'app-task',
   imports: [],

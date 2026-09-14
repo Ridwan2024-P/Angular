@@ -1,6 +1,7 @@
 import { Component, computed, signal,Input,input, Output,EventEmitter, output, } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 import { StringifyOptions } from 'querystring';
+import { Users } from './users.model';
 
 //  type Users{
 //   id : string;
@@ -8,11 +9,11 @@ import { StringifyOptions } from 'querystring';
 //   avatar :string;
 //  }
 
-interface  Users{
-    id : string;
-  name :string;
-  avatar :string;
-}
+// interface  Users{
+//     id : string;
+//   name :string;
+//   avatar :string;
+// }
 
 
 // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
