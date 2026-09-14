@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output ,EventEmitter} from '@angular/core';
 import { taskModal } from './task.modal';
+
 
 // interface taskModal {
 //   id:string,
@@ -7,8 +8,10 @@ import { taskModal } from './task.modal';
 //   title:string,
 //   summary:string,
 //   dueDate:string
-
 // }
+
+
+// 
 @Component({
   selector: 'app-task',
   imports: [],
@@ -17,4 +20,8 @@ import { taskModal } from './task.modal';
 })
 export class Task {
   @Input({required:true}) task!:taskModal;
+  @Output() complete = new EventEmitter<string>();
+  onCompleteTask(){
+    this.complete.emit(this.task.id)
+  }
 }
