@@ -13,4 +13,7 @@ export class User {
   get imagePath(){
     return this.selectedUser.avatar
   }
+  onSelectUser(){
+    console.log('Clicked')
+  }
 }
