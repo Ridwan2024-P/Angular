@@ -3,18 +3,25 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { User } from './user/user';
 import { DUMMY_USERS } from './dummy-users';
+import { Tasks } from './tasks/tasks';
 
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, User],
+  imports: [HeaderComponent, User, Tasks],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  users =  DUMMY_USERS
+  users =  DUMMY_USERS;
+  selectedUserId = 'u1';
+
+  get selectedUser(){
+    return this.users.find((a)=>a.id === this.selectedUserId)!;
+
+  }
   onSelectedUser(id:string){
-    console.log("User Id is : " + id)
+   this.selectedUserId = id ;
   }
   protected readonly title = signal('my-angular-app');
 }

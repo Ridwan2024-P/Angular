@@ -12,15 +12,15 @@ import { StringifyOptions } from 'querystring';
 })
 export class User {
   @Input ({required:true}) id!:string;
-   @Input({required: true}) avatar!: string;
-   @Input({required : true}) name!: string;
-  // @Output() select = new EventEmitter<string>();
+  @Input({required: true}) avatar!: string;
+  @Input({required : true}) name!: string;
+  @Output() select = new EventEmitter<string>();
   // avatar = input.required<string>();
   // name = input.required<String>();
 
   // Output function
 
-  select = output<string>();
+  // select = output<string>();
 
 
   // selectedUser = signal(DUMMY_USERS [randomIndex])

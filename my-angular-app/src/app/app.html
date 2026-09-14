@@ -10,5 +10,5 @@
         <li><app-user [id]="users[4].id" [avatar]="users[4].avatar" [name]="users[4].name" (select)="onSelectedUser($event)"></app-user></li>
         <li><app-user [id]="users[5].id" [avatar]="users[5].avatar" [name]="users[5].name" (select)="onSelectedUser($event)"></app-user></li>
     </ul>
-     Tasks of that Users
+     <app-tasks [name] = "selectedUser.name"></app-tasks>
 </main>
