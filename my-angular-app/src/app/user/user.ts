@@ -1,6 +1,7 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal,Input } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
+import { StringifyOptions } from 'querystring';
+// const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
 @Component({
   selector: 'app-user',
   standalone : true,
@@ -9,14 +10,24 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
   styleUrl: './user.scss',
 })
 export class User {
-  selectedUser = signal(DUMMY_USERS [randomIndex])
-  imagePath = computed(()=>this.selectedUser().avatar)
-  // get imagePath(){
-  //   return this.selectedUser.avatar
-  // }
-  onSelectUser(){
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
-    this.selectedUser.set( DUMMY_USERS [randomIndex])
-    //  this.selectedUser = DUMMY_USERS [randomIndex]
+   @Input() avatar!: string;
+   @Input() name!: string;
+
+
+  // selectedUser = signal(DUMMY_USERS [randomIndex])
+  // imagePath = computed(()=>this.selectedUser().avatar)
+  // // get imagePath(){
+  // //   return this.selectedUser.avatar
+
+  get imagePath(){
+    return this.avatar;
   }
+  
+  
+  onSelectUser(){
+    // const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)
+    // this.selectedUser.set( DUMMY_USERS [randomIndex])
+    // //  this.selectedUser = DUMMY_USERS [randomIndex]
+  }
+
 }
