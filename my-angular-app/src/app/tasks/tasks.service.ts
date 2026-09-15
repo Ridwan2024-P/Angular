@@ -1,7 +1,8 @@
-import { NewTaskData } from "./task/task.modal";
+import { NewTaskData } from './task/task.modal';
 
-class TaskService{
-    tasks = [
+export class TaskService {
+
+  tasks = [
     {
       id: 't1',
       userId: 'u1',
@@ -45,14 +46,15 @@ class TaskService{
       dueDate: '2026-12-12'
     }
   ];
-  getUserTasks(userId:string){
+
+  getUserTasks(userId: string) {
     return this.tasks.filter(
       (task) => task.userId === userId
     );
   }
 
-   addTask(taskData: NewTaskData, userId:string){
- this.tasks.unshift({
+  addTask(taskData: NewTaskData, userId: string) {
+    this.tasks.unshift({
       id: new Date().getTime().toString(),
       userId: userId,
       title: taskData.title,
@@ -60,7 +62,10 @@ class TaskService{
       dueDate: taskData.date
     });
   }
-  removeTask(id:string){
 
+  removeTask(id: string) {
+    this.tasks = this.tasks.filter(
+      (task) => task.id !== id
+    );
   }
 }
