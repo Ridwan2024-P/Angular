@@ -1,8 +1,12 @@
+import { Injectable } from '@angular/core';
 import { NewTaskData } from './task/task.modal';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class TaskService {
 
-  tasks = [
+  private tasks = [
     {
       id: 't1',
       userId: 'u1',
@@ -53,7 +57,7 @@ export class TaskService {
     );
   }
 
-  addTask(taskData: NewTaskData, userId: string) {
+  addTask(userId: string, taskData: NewTaskData) {
     this.tasks.unshift({
       id: new Date().getTime().toString(),
       userId: userId,
