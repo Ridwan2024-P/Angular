@@ -1,5 +1,6 @@
 import { Component, Input, Output ,EventEmitter} from '@angular/core';
 import { taskModal } from './task.modal';
+import { DatePipe } from '@angular/common';
 
 
 // interface taskModal {
@@ -14,7 +15,7 @@ import { taskModal } from './task.modal';
 // 
 @Component({
   selector: 'app-task',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './task.html',
   styleUrl: './task.scss',
 })
