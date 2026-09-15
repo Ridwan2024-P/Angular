@@ -1,6 +1,7 @@
-import { Component, Output,EventEmitter  } from '@angular/core';
+import { Component, Output,EventEmitter, signal  } from '@angular/core';
 import { App } from '../../app';
 import { FormsModule } from '@angular/forms';
+import { single } from 'rxjs';
 
 @Component({
   selector: 'app-new-task',
@@ -10,9 +11,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTask {
    @Output() cancel = new EventEmitter<void>()
-  enteredTitle = '';
-  enteredSummary= '';
-  enteredDate = '';
+  enteredTitle = signal('');
+  enteredSummary= signal('');
+  enteredDate = signal('');
    onCanceling(){
      this.cancel.emit();
   }
