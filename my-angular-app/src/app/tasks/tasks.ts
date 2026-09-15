@@ -13,6 +13,8 @@ export class Tasks {
   @Input({required :true}) userId!:string;
  @Input({required:true}) name!:string;
  isAddingTask = false;
+
+
  tasks= [{
   id : 't1',
   userId:'u1',
@@ -69,7 +71,10 @@ get selectedUserTasks(){
     this.tasks=this.tasks.filter((task)=> task.id !== id)
   }
   onStartAddTask(){
-this.isAddingTask = true
+  this.isAddingTask = true
+  }
+  onCancelingTask(){
+    this.isAddingTask =  false
   }
 
 }
