@@ -2,6 +2,7 @@ import { Component, computed, signal,Input,input, Output,EventEmitter, output, }
 import { DUMMY_USERS } from '../dummy-users';
 import { StringifyOptions } from 'querystring';
 import { Users } from './users.model';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 //  type Users{
 //   id : string;
@@ -20,7 +21,7 @@ import { Users } from './users.model';
 @Component({
   selector: 'app-user',
   standalone : true,
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './user.html',
   styleUrl: './user.scss',
 })

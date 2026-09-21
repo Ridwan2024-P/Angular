@@ -1,15 +1,16 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { User } from './user/user';
 import { DUMMY_USERS } from './dummy-users';
 import { Tasks } from './tasks/tasks';
 import { NgFor } from '@angular/common';
+import { Login } from './login/login';
 
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, User, Tasks],
+  imports: [RouterOutlet, RouterLinkWithHref,Login],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

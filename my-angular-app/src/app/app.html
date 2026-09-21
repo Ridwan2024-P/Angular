@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 
 
 <main>
@@ -12,11 +12,19 @@
         <li><app-user [user]="users[3]" (select)="onSelectedUser($event)"></app-user></li>
         <li><app-user [user]="users[4]" (select)="onSelectedUser($event)"></app-user></li>
         <li><app-user [user]="users[5]" (select)="onSelectedUser($event)"></app-user></li> -->
-    </ul>
+    <!-- </ul>
     @if(selectedUser){
     <app-tasks [name] = "selectedUser.name" [userId] = "selectedUser.id"></app-tasks>
     }@else {
         <p>This is Home</p>
     }
    
-</main>
+</main> --> -->
+
+<h1>This is Basic Routing Page</h1>
+ <router-outlet>
+    <app-login></app-login>
+    <ul>
+        <li routerLink="/Login"> User</li>
+    </ul>
+ </router-outlet>
