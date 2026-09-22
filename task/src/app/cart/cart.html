@@ -1,0 +1,66 @@
+<div class="cart-container">
+
+  <h1>Shopping Cart</h1>
+
+  <div class="cart-list">
+
+    @for (product of cartItems$ | async; track product.id) {
+
+      <div class="cart-item">
+
+        <div class="product-info">
+
+          <h2>{{ product.name }}</h2>
+
+          <p>
+            Price:
+            <strong>৳{{ product.price | number }}</strong>
+          </p>
+
+        </div>
+
+        <div class="quantity">
+
+          <button
+            (click)="decreaseQuantity(product.id)"
+          >
+            -
+          </button>
+
+          <span>
+            {{ product.quantity }}
+          </span>
+
+          <button
+            (click)="increaseQuantity(product.id)"
+          >
+            +
+          </button>
+
+        </div>
+
+        <div class="item-total">
+
+          ৳{{ product.price * product.quantity | number }}
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+
+  <div class="cart-summary">
+
+    <h2>
+      Subtotal:
+      <strong>
+        ৳{{ cartTotal$ | async | number }}
+      </strong>
+    </h2>
+
+  </div>
+
+</div>
