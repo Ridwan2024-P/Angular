@@ -7,7 +7,7 @@ import { NotFound } from './not-found/not-found';
 
 export const routes: Routes = [
     {path:'productserach',component:ProductSerach},
-     {path:'productfilter',loadComponent: () =>import('./product-filter/product-filter').then(m => m.ProductFilter)},
+    {path:'productfilter',loadComponent: () =>import('./product-filter/product-filter').then(m => m.ProductFilter)},
     {path:'productcart',component:Cart},
     {path:'**',component:NotFound},
 

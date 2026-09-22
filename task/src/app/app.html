@@ -1,9 +1,65 @@
-<!-- <app-cart></app-cart>
-<app-product-serach></app-product-serach>
-<app-product-filter></app-product-filter> -->
-<h1>Welcome to Product Page</h1>
-<router-outlet>
-<button routerLink="productserach">Product Seeach</button>
-<button routerLink="productfilter">Product Filter</button>
-<button routerLink="productcart">Product Cart</button>
-</router-outlet>
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="logo">
+      My Dashboard
+    </div>
+
+    <div class="menu">
+
+      <button
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        🏠 Dashboard
+      </button>
+
+      <button
+        routerLink="/productserach"
+        routerLinkActive="active">
+        📦 Products
+      </button>
+
+      <button
+        routerLink="/productcart"
+        routerLinkActive="active">
+        🛒 Orders
+      </button>
+
+      <button
+        routerLink="/productfilter"
+        routerLinkActive="active">
+        👤 ProductFilter
+      </button>
+
+      <button
+        routerLink="/reports"
+        routerLinkActive="active">
+        📊 Reports
+      </button>
+
+      <button
+        routerLink="/settings"
+        routerLinkActive="active">
+        ⚙️ Settings
+      </button>
+
+      <button
+        routerLink="/logout"
+        routerLinkActive="active">
+        🚪 Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <main class="main">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>
