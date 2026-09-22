@@ -1,62 +1,60 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Observable, startWith ,map} from 'rxjs';
-import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { Observable, startWith, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 
-interface Product{
-  id:number;
-  name:string;
-  price:number;
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+}
+
+interface ProductResponse {
+  products: Product[];
 }
 
 @Component({
   selector: 'app-product-serach',
-  standalone:true,
-  imports: [CommonModule,
-    ReactiveFormsModule, RouterOutlet, RouterLinkWithHref],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterOutlet,
+    RouterLinkWithHref
+  ],
   templateUrl: './product-serach.html',
   styleUrl: './product-serach.css',
 })
 export class ProductSerach {
-    searchControl = new FormControl('');
-      products: Product[] = [
-    {
-      id: 1,
-      name: 'iPhone 15',
-      price: 80000
-    },
-    {
-      id: 2,
-      name: 'Samsung S24',
-      price: 70000
-    },
-    {
-      id: 3,
-      name: 'Xiaomi 14',
-      price: 50000
-    },
-    {
-      id: 4,
-      name: 'iPhone 15 Pro',
-      price: 120000
-    },
-    {
-      id: 5,
-      name: 'OnePlus 12',
-      price: 60000
-    }
-  ];
 
-    filteredProducts$:Observable<Product[]>= this.searchControl.valueChanges.pipe(
-        startWith(''),
-        map(searchText=>
-          searchText?.toLowerCase().trim()??''
-        ),
-        map(searchText => 
-          this.products.filter(product=>
-            product.name.toLowerCase().includes(searchText)
-          )
+  searchControl = new FormControl('');
+
+  products: Product[] = [];
+
+  filteredProducts$: Observable<Product[]>;
+
+  constructor(private http: HttpClient) {
+
+    this.http
+      .get<ProductResponse>('https://dummyjson.com/products')
+      .subscribe(response => {
+        this.products = response.products;
+      });
+
+    this.filteredProducts$ = this.searchControl.valueChanges.pipe(
+      startWith(''),
+
+      map(searchText =>
+        searchText?.toLowerCase().trim() ?? ''
+      ),
+
+      map(searchText =>
+        this.products.filter(product =>
+          product.title.toLowerCase().includes(searchText)
         )
-   )
-}
+      )
+    );
+  }
+} 

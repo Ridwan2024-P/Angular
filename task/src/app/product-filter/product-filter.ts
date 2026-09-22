@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { combineLatest, map, startWith } from 'rxjs';
 
 interface Product {
   id: number;
-  name: string;
+  title: string;
   category: string;
   price: number;
+}
+
+interface ProductResponse {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
 }
 
 @Component({
@@ -24,46 +32,19 @@ export class ProductFilter {
 
   searchControl = new FormControl('');
 
-  categoryControl = new FormControl('All');
+  categoryControl = new FormControl('smartphones');
 
-  products: Product[] = [
-    {
-      id: 1,
-      name: 'iPhone 15',
-      category: 'Phone',
-      price: 80000
-    },
-    {
-      id: 2,
-      name: 'Samsung S24',
-      category: 'Phone',
-      price: 70000
-    },
-    {
-      id: 3,
-      name: 'MacBook Air',
-      category: 'Laptop',
-      price: 120000
-    },
-    {
-      id: 4,
-      name: 'Dell XPS 15',
-      category: 'Laptop',
-      price: 150000
-    },
-    {
-      id: 5,
-      name: 'Apple Watch',
-      category: 'Watch',
-      price: 50000
-    },
-    {
-      id: 6,
-      name: 'Samsung Watch',
-      category: 'Watch',
-      price: 35000
-    }
-  ];
+  products: Product[] = [];
+
+  constructor(private http: HttpClient) {
+
+    this.http
+      .get<ProductResponse>('https://dummyjson.com/products')
+      .subscribe(response => {
+        this.products = response.products;
+      });
+
+  }
 
   filteredProducts$ = combineLatest([
 
@@ -72,7 +53,7 @@ export class ProductFilter {
     ),
 
     this.categoryControl.valueChanges.pipe(
-      startWith('All')
+      startWith('smartphones')
     )
 
   ]).pipe(
@@ -84,12 +65,12 @@ export class ProductFilter {
       return this.products.filter(product => {
 
         const matchesSearch =
-          product.name
+          product.title
             .toLowerCase()
             .includes(search);
 
         const matchesCategory =
-          category === 'All' ||
+          category === 'smartphones' ||
           product.category === category;
 
         return matchesSearch && matchesCategory;
