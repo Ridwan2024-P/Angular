@@ -1,0 +1,104 @@
+<div class="container">
+
+  <h1>Product Filter</h1>
+
+  <div class="filter-area">
+
+    <div class="search-box">
+
+      <label for="search">
+        Search Product
+      </label>
+
+      <input
+        id="search"
+        type="text"
+        [formControl]="searchControl"
+        placeholder="Search product..."
+      >
+
+    </div>
+
+
+    <div class="category-box">
+
+      <label for="category">
+        Category
+      </label>
+
+      <select
+        id="category"
+        [formControl]="categoryControl"
+      >
+
+        <option value="All">
+          All
+        </option>
+
+        <option value="Phone">
+          Phone
+        </option>
+
+        <option value="Laptop">
+          Laptop
+        </option>
+
+        <option value="Watch">
+          Watch
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div class="product-list">
+
+    @for (
+      product of filteredProducts$ | async;
+      track product.id
+    ) {
+
+      <div class="product-card">
+
+        <div>
+
+          <h2>
+            {{ product.name }}
+          </h2>
+
+          <p>
+            Category:
+            <strong>
+              {{ product.category }}
+            </strong>
+          </p>
+
+        </div>
+
+        <div class="price">
+
+          ৳{{ product.price | number }}
+
+        </div>
+
+      </div>
+
+    }
+
+
+    @if ((filteredProducts$ | async)?.length === 0) {
+
+      <div class="no-result">
+
+        No product found.
+
+      </div>
+
+    }
+
+  </div>
+
+</div>
