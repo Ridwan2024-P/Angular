@@ -1,0 +1,42 @@
+<div class="container">
+
+  <h1>RxJS Product Search</h1>
+
+  <div class="search-box">
+
+    <label for="search">
+      Search Product
+    </label>
+
+    <input
+      id="search"
+      type="text"
+      [formControl]="searchControl"
+      placeholder="Search product..."
+    >
+
+  </div>
+
+  <div class="product-list">
+
+    @for (
+      product of filteredProducts$ | async;
+      track product.id
+    ) {
+
+      <div class="product-card">
+
+        <h2>{{ product.name }}</h2>
+
+        <p>
+          Price:
+          <strong>৳{{ product.price | number }}</strong>
+        </p>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>
