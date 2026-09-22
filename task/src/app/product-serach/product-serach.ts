@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable, startWith ,map} from 'rxjs';
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 
 interface Product{
   id:number;
@@ -12,8 +13,8 @@ interface Product{
 @Component({
   selector: 'app-product-serach',
   standalone:true,
-  imports: [ CommonModule,
-    ReactiveFormsModule],
+  imports: [CommonModule,
+    ReactiveFormsModule, RouterOutlet, RouterLinkWithHref],
   templateUrl: './product-serach.html',
   styleUrl: './product-serach.css',
 })
