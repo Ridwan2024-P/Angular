@@ -30,10 +30,16 @@ export class Login {
     const { email, password } = this.loginForm.value;
 
     this.http.get<any[]>('/login.json').subscribe(users => {
-      const user = users.find(u => u.email===email && u.password === password && u.role === "admin");
+      const admin = users.find(u => u.email===email && u.password === password && u.role === "admin");
+       const  employee = users.find(u => u.email===email && u.password === password && u.role === "employee");
       
-      if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      
+      if (admin) {
+      localStorage.setItem('admin', JSON.stringify(admin));
+        this.router.navigate(['/dashboard']);
+      }
+      if (employee) {
+      localStorage.setItem('employee', JSON.stringify(employee));
         this.router.navigate(['/dashboard']);
       } else {
       
